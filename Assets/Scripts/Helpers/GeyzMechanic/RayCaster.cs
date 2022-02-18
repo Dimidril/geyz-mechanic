@@ -73,7 +73,7 @@ namespace Helpers.GeyzMechanic
 
         void DoEvent(Action<Collider> action, Collider collider) {
             if (action != null) {
-                action(collider);
+                action?.Invoke(collider);
             }
         }
     }
