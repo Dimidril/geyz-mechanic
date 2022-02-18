@@ -7,16 +7,16 @@ namespace Helpers.GeyzMechanic
     {
         [SerializeField] bool canRotate = false;
 
-        private RayCaster _rayCaster;
+        RayCaster _rayCaster;
 
-        private void Start()
+        void Start()
         {
             _rayCaster = new RayCaster(transform, Mathf.Infinity);
             _rayCaster.OnRayEnter += OnRaycastEnter;
             _rayCaster.OnRayExit += OnRaycastExit;
         }
 
-        private void Update()
+        void Update()
         {
             if (canRotate)
             {
@@ -27,7 +27,7 @@ namespace Helpers.GeyzMechanic
             _rayCaster.CastRay();
         }
 
-        private void OnRaycastEnter(Collider collider)
+        void OnRaycastEnter(Collider collider)
         {
             if (collider.TryGetComponent(out GeyzObject geyzObject))
             {
@@ -35,7 +35,7 @@ namespace Helpers.GeyzMechanic
             }
         }
 
-        private void OnRaycastExit(Collider collider)
+        void OnRaycastExit(Collider collider)
         {
             if (collider.TryGetComponent(out GeyzObject geyzObject))
             {

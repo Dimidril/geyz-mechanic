@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class GeyzObject : MonoBehaviour
 {
-    [SerializeField] private float _startWatchDuration = 0.5f;
-    [SerializeField] private float _endWatchDuration = 1f;
-    [SerializeField] private GameObject _objectToWatch;
+    [SerializeField] float _startWatchDuration = 0.5f;
+    [SerializeField] float _endWatchDuration = 1f;
+    [SerializeField] GameObject _objectToWatch;
 
-    private IEnumerator _showCoroutine;
-    private IEnumerator _hideCoroutine;
+    IEnumerator _showCoroutine;
+    IEnumerator _hideCoroutine;
 
     private void Awake()
     {
@@ -28,14 +28,14 @@ public class GeyzObject : MonoBehaviour
         StartCoroutine(_hideCoroutine);
     }
 
-    private IEnumerator ShowObject()
+    IEnumerator ShowObject()
     {
         StopCoroutine(_hideCoroutine);
         yield return new WaitForSeconds(_startWatchDuration);
         _objectToWatch.SetActive(true);
     }
 
-    private IEnumerator HideObject()
+    IEnumerator HideObject()
     {
         StopCoroutine(_showCoroutine);
         yield return new WaitForSeconds(_endWatchDuration);

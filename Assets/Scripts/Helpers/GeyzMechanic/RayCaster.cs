@@ -6,10 +6,10 @@ namespace Helpers.GeyzMechanic
 {
     public class RayCaster
     {
-        private Transform _startTransform;
-        private Transform _endTransform;
-        private Vector3 _direction;
-        private float _rayLength;
+        Transform _startTransform;
+        Transform _endTransform;
+        Vector3 _direction;
+        float _rayLength;
 
         public event Action<Collider> OnRayEnter;
         public event Action<Collider> OnRayStay;
@@ -44,7 +44,7 @@ namespace Helpers.GeyzMechanic
             return hit.collider != null ? true : false;
         }
 
-        private void ProcessCollision(Collider current) 
+        void ProcessCollision(Collider current) 
         {
             if (current == null) 
             {
@@ -71,8 +71,7 @@ namespace Helpers.GeyzMechanic
             previous = current;
         }
 
-
-        private void DoEvent(Action<Collider> action, Collider collider) {
+        void DoEvent(Action<Collider> action, Collider collider) {
             if (action != null) {
                 action(collider);
             }
