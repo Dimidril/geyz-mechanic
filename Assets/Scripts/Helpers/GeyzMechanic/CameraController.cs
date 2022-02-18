@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Helpers.GeyzMechanic
 {
-    public class CameraRaycaster : MonoBehaviour
+    public class CameraController : MonoBehaviour
     {
         [SerializeField] bool canRotate = false;
 
@@ -16,7 +16,7 @@ namespace Helpers.GeyzMechanic
             _rayCaster.OnRayExit += OnRaycastExit;
         }
 
-        void Update()
+        private void Update()
         {
             if (canRotate)
             {
